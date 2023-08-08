@@ -1,0 +1,25 @@
+@import "./scss/partials/menu";
+@import "./scss/partials/hero";
+@import "./scss/partials/home";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// * {
+//   outline: 1px solid pink;
+//   color: #6184D8;
+// }
+
+html {
+  font-size: 62.5%;
+}
+
+.strong {
+  font-weight: 800;
+  color: #6184D8;
+}

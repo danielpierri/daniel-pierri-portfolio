@@ -1,0 +1,356 @@
+.nav {
+  &__container {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo__container {
+    display: flex;
+  }
+
+  &__social-media__container {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-left: 2.5rem;
+
+    & img {
+      height: 25px;
+      transition: 
+        transform .5s,
+        filter .25s;
+    }
+
+    & img:hover {
+      filter: drop-shadow(0px 0px 2px #F9E005);
+      transform: rotate(360deg);
+    }
+  }
+
+  &__logo {
+    background-color: #F9E005;
+    box-shadow: 5px 5px 5px #000;
+    color: #1B1C23;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 900;
+    transition: 
+      padding .2s,
+      letter-spacing .2s,
+      background .2s;
+
+    &:is(:hover, :focus) {
+      background-color: #6184D8;
+      letter-spacing: -3.5px;
+    }     
+  }
+
+  &__list {
+    display: flex;
+
+    & > li {
+      list-style: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding-block: 1.5rem;
+    color: #F9E005;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    transition: color .2s;
+    
+    &:hover,
+    &:focus {
+      color: #6184D8;
+      text-shadow: 0 0 1px #6184D8;
+    }
+
+    &:hover::after {
+      background-color: 
+      #F9E005;
+    }
+
+    &::after {
+      content: "";
+      background-color: transparent;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 5px;
+      height: 5px;
+      margin-inline: auto;
+      transition: background .3s;
+    }
+
+    &.pending {
+      display: none;
+    }
+
+    &.active {
+      color: #F9E005;
+    }
+
+    &.active:hover {
+      color: #fff388;
+    }
+
+    &.active::after {
+      content: "";
+      background-color: 
+      #6184D8;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 5px;
+      height: 5px;
+      margin-inline: auto;
+      transition: background .3s;
+    }
+  }
+}
+
+// DESKTOP
+@media (min-width: 55em) {
+  .nav {
+    &__container {
+      align-items: center;
+      justify-content: space-between;
+      margin-inline: auto;
+      max-width: 1800px;
+    }
+
+    &__hamburger {
+      display: none;
+    }
+  
+    &__logo {
+      font-size: 40px;
+      letter-spacing: -7px;
+      padding-right: 14px;
+      padding-left: 7px;
+      padding-block: 7px;
+  
+      &:is(:hover, :focus) {
+        padding-right: 10.5px;
+      }
+    }
+  
+    &__list {
+      flex-direction: row;
+      align-self: center;
+      gap: 3rem;
+      margin-right: 2.5rem;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// TABLET AND LOW RES DESKTOPS
+@media (max-width: 87.5em) {
+  .nav {
+
+    &__social-media__container {
+      gap: 2rem;
+
+      & img {
+        height: 20px;
+      }
+    }
+
+    &__list {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// MOBILE
+@media (max-width: 60em) {
+  .nav {
+    z-index: 10;
+
+    &__container {
+      position: fixed;
+      flex-direction: column;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    &__social-media__container {
+      gap: 2.5rem;
+      margin-top: 25px;
+      z-index: 10;
+  
+      & img {
+        height: 20px;
+      }
+    }
+
+    &__wrapper {
+      background-color: rgba(33, 33, 33, 0.443);
+      backdrop-filter: blur(30px);
+      position: fixed;
+      text-align: center;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      transform: scale(1);
+      transition: transform .2s;
+    }
+
+    &__wrapper--hidden {
+      border-radius: 100%;
+      position: fixed;
+      text-align: center;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      // z-index: 1000;
+      transform: scale(0);
+      transition: all .4s;
+    }
+
+    &__hamburger {
+      position: absolute;
+      cursor: pointer;
+      right: 10px;
+      height: 75px;
+      width: 50px;
+      text-align: center;
+      // border: 1px solid red;
+      z-index: 100;
+    }
+
+    &__hamburger__btn {
+      cursor: pointer;
+      position: relative;
+      background-color: #FFD36D;
+      border: none;
+      /* position: absolute; */
+      top: 25px;
+      height: 2px;
+      width: 30px;
+    }
+
+    &__hamburger__btn::before,
+    &__hamburger__btn::after {
+      content: "";
+      position: absolute;
+      background-color: #FFD36D;
+      top: 10px;
+      right: 0;
+      left: 0;
+      height: 2px;
+      width: 30px;
+    }
+
+    &__hamburger__btn:after {
+      top: -10px;
+      background-color: #FFD36D;
+      transition: all .5s;
+    }
+
+    &__hamburger__btn--active {
+      cursor: pointer;
+      position: relative;
+      background-color: #FFD36D;
+      border: none;
+      /* position: absolute; */
+      top: 25px;
+      height: 2px;
+      width: 30px;
+      transform: rotate(315deg);
+    }
+
+    &__hamburger__btn--active::before {
+      content: "";
+      position: absolute;
+      background-color: #FFD36D;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 2px;
+      width: 30px;
+      transform: rotate(-90deg);
+    }
+  
+    &__hamburger__btn--active::after {
+      content: "";
+      position: absolute;
+      background-color: #FFD36D;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 0px;
+      width: 30px;
+      transform: rotate(-90deg);
+    }
+
+    &__hamburger__btn,
+    &__hamburger__btn::before,
+    &__hamburger__btn::after,
+    &__hamburger__btn--active,
+    &__hamburger__btn--active::before,
+    &__hamburger__btn--active::after {
+      transition: all .5s;
+    }
+  
+    &__logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-size: 40px;
+      letter-spacing: -7px;
+      padding-right: 14px;
+      padding-left: 7px;
+      padding-block: 7px;
+      z-index: 10;
+  
+      &:is(:hover, :focus) {
+        padding-right: 10.5px;
+      }
+    }
+  
+    &__list {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 25vh;
+      gap: 2rem;
+      font-size: 1.5rem;
+    }
+
+    &__link {
+      position: relative;
+      display: block;
+      padding-block: 1.5rem;
+      color: #F9E005;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      transition: color .2s;
+      
+      &:hover,
+      &:focus {
+        color: #6184D8;
+        text-shadow: 0 0 1px #6184D8;
+      }
+  
+      &:hover::after {
+        display: none;
+      }
+  
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
